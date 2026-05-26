@@ -1,0 +1,14 @@
+
+# Ignore Windows executable files
+*.exe
+
+# Ignore Mac/Linux executable outputs
+a.out
+*.out
+
+# Ignore object files generated during compilation
+*.o
+*.obj
+
+# Ignore VS Code configuration files (optional but keeps things clean)
+.vscode/
