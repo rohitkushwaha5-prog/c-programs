@@ -14,6 +14,9 @@ int buff=0;
 void push(double);
 double pop(void);
 int getop(char x[]);
+int getch(void);
+void unget(int c);
+
 
 int main()
 {
@@ -48,7 +51,7 @@ int main()
               printf("divisible by zero is not posible");
             break;
             case '\n':
-            printf("\t => %d",pop());
+            printf("\t => %g",pop());
             break;
             default:
             printf("invalid input");
@@ -77,6 +80,30 @@ double pop(void)
     }
 } 
 int getop(char x []){ 
+
+    int c , i;
+    while((x[0]=c=getch())== ' ' || c == '\t')
+    ;
+    x[1]='\0';
+    if(!isdigit(c)&& c !='.')
+      return c;
+    
+      i=0;
+
+      if(isdigit(c))
+      while(isdigit(x[++i]=c=getch()))
+      ;
+      if(c=='.')
+       while(isdigit(x[++i]=c=getch()))
+       ;
+       x[i]='\0';
+
+       if(c!= EOF)
+        unget(c);
+
+   return number ;
+
+
     
 
 }
@@ -86,7 +113,7 @@ int getch(void)
     return (buff>0) ? op[--buff]: getchar();
 
 }
-int unget(int c)
+void unget(int c)
 {
     if(buff>=SIZE2)
     printf("too many charecters");
